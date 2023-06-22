@@ -1,16 +1,15 @@
-# Use a lightweight base image
-FROM nginx:alpine
+# Use an Ubuntu base image
+FROM ubuntu:latest
 
-WORKDIR /tindog
+# Install necessary packages
+RUN apt-get update && \
+    apt-get install -y nginx
 
-# Remove the default Nginx configuration
-RUN rm -rf /etc/nginx/conf.d/*
+# Copy the index.html file to the nginx default HTML directory
+COPY index.html /var/www/html/
 
-# Copy the files to the Nginx document root
-COPY . /usr/share/nginx/html
+# Expose port 80 for web traffic
+EXPOSE 80
 
-# Expose the default Nginx port (port 80)
-EXPOSE 3000
-
-# Start the Nginx server
+# Start the nginx service
 CMD ["nginx", "-g", "daemon off;"]
