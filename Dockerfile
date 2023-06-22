@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y nginx
 
 # Copy the index.html file to the nginx default HTML directory
-COPY index.html /var/www/html/
+COPY . /var/www/html/
 
 # Expose port 80 for web traffic
 EXPOSE 80
