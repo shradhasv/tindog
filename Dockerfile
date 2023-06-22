@@ -10,7 +10,7 @@ RUN rm -rf /etc/nginx/conf.d/*
 COPY . /usr/share/nginx/html
 
 # Expose the default Nginx port (port 80)
-EXPOSE 80
+EXPOSE 3000
 
 # Start the Nginx server
 CMD ["nginx", "-g", "daemon off;"]
